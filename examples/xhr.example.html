@@ -1,0 +1,117 @@
+<!--
+ * @Description: 关于跨域的简单例子，需要你自己启动两个服务
+ * @Author: TangXiaozhuo
+ * @LastEditors: Tang
+ * @Date: 2019-04-19 13:45:14
+ * @LastEditTime: 2019-04-19 13:45:45
+ -->
+<style> 
+  .blue{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg,#2C68E0,#6898F8);
+    font-size: 0;
+  }
+  .white{
+    opacity: 0.8;
+    background: #FFFFFF;
+    border: 0 solid #CED1D6;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+    border-radius: 3.59px;
+    /* position: absolute;
+    top: 0; */
+  }
+  .big{
+    width: 150px;
+    height: 150px;
+    transform: scale(1);
+    display: inline-block;
+    margin: 20px;
+    font-size: 12px;
+    white-space:  pre-wrap;
+  }
+</style>
+<body>
+    <div class="blue">
+        <div class="white big" id='xhr'>xhr</div>
+        <div class="white big" id='xhrw'>xhr withCredentials</div>
+        <div class="white big" id='fetch'>fetch</div>
+        <div class="white big" id='fetchinclude'>fetch include</div>
+        <div class="white big" id='fetchomit'>fetch omit</div>
+        <div class="white big" id='fetchsame'>fetch same origin</div>
+        <div class="white big" id='fetchcors'>fetch mode cors</div>
+        <div class="white big" id='fetchnocors'>fetch mode no-cors</div>
+        <div class="white big" id='myself'>myself</div>
+        <div class="white big" id='myselffetch'>myselffetch</div>
+      </div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+document.querySelector('#myselffetch').addEventListener('click', () => {
+  window.sendFetch({
+    credentials: 'omit'
+  }, 'http://dev.m.ke.com:3010/test/a')
+  window.sendXHR(true, 'http://dev.m.ke.com:3010/test/a')
+})
+document.querySelector('#myself').addEventListener('click', () => {
+  window.sendXHR(false, 'http://dev.m.ke.com:3010/test/a')
+})
+document.querySelector('#xhr').addEventListener('click', () => {
+  window.sendXHR()
+})
+document.querySelector('#xhrw').addEventListener('click', () => {
+  window.sendXHR(true)
+})
+document.querySelector('#fetchsame').addEventListener('click', () => {
+  window.sendFetch({
+    credentials: 'same-origin'
+  })
+})
+document.querySelector('#fetch').addEventListener('click', () => {
+  window.sendFetch()
+})
+document.querySelector('#fetchinclude').addEventListener('click', () => {
+  window.sendFetch({
+    credentials: 'include'
+  })
+})
+document.querySelector('#fetchomit').addEventListener('click', () => {
+  window.sendFetch({
+    credentials: 'omit'
+  })
+})
+document.querySelector('#fetchcors').addEventListener('click', () => {
+  window.sendFetch({
+    mode: 'cors'
+  })
+})
+document.querySelector('#fetchnocors').addEventListener('click', () => {
+  window.sendFetch({
+    mode: 'no-cors'
+  })
+})
+window.sendXHR = function (is, url) {
+  window.$.ajax({
+    url: url || 'http://127.0.0.1:9999/test',
+    method: 'get',
+    xhrFields: {
+      withCredentials: is
+    },
+    success: function (res) {
+      console.log(res)
+    },
+    error: function (err) {
+      console.error(err)
+    }
+  })
+}
+window.sendFetch = function (obj, url) {
+  fetch(url || 'http://127.0.0.1:9999/test', obj)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.error(err)
+    })
+}
+</script>
+</body>
