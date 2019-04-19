@@ -1,0 +1,17 @@
+{
+  "name": "ppt",
+  "version": "1.0.0",
+  "description": "nodeppt serve yourMarkdownFileName.md",
+  "scripts": {
+    "start": "nodeppt serve xhr.md"
+  },
+  "author": "tang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tangtangtangtangtang/ppt"
+  },
+  "registry": "https://registry.npm.taobao.org/",
+  "dependencies": {
+    "nodeppt": "^2.1.5"
+  }
+}
