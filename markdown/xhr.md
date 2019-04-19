@@ -216,7 +216,7 @@ what does fetch have?
 
 :::gallery
 
-![](./public/xhr/fetchjiegou.png)
+![](../public/xhr/fetchjiegou.png)
 
 ## Fetch Structure
 
@@ -225,13 +225,13 @@ what does fetch have?
 <slide :class="size-60">
 
 :::gallery
-![](./public/xhr/xhrjiegou.png)
+![](../public/xhr/xhrjiegou.png)
 
 ## XHR Structure
 
 ---
 
-![](./public/xhr/koa.png)
+![](../public/xhr/koa.png)
 
 ## KOA Structure
 
@@ -243,7 +243,7 @@ what does fetch have?
 1. Reference-counting garbage collection
 2. Mark-and-Sweep Algorithm (Unreachable)
 
-![](./public/xhr/markup.png)
+![](../public/xhr/markup.png)
 
 <slide image=".light">
 #Garbage collection
@@ -251,7 +251,7 @@ what does fetch have?
 ### XMLHttpRequest
 An XMLHttpRequest object must not be garbage collected if its state is either **opened with the send() flag set, headers received, or loading**, and it has one or more **event listeners registered** whose type is one of **readystatechange, progress, abort, error, load, timeout, and loadend**.
 
-![](./public/xhr/axiosgarbagecollection.png)
+![](../public/xhr/axiosgarbagecollection.png)
 
 :::
 :::{.content-right}
@@ -267,11 +267,11 @@ An XMLHttpRequest object must not be garbage collected if its state is either **
 
 Promise based HTTP client for the browser and node.js
 :::{.content-left}
-![](./public/xhr/axiosxhr.png)
-![](./public/xhr/axiosxhrresolve.png)
+![](../public/xhr/axiosxhr.png)
+![](../public/xhr/axiosxhrresolve.png)
 :::
 :::{.content-right}
-![](./public/xhr/axiosdefault.png)
+![](../public/xhr/axiosdefault.png)
 :::
 
 <slide >
